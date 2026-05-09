@@ -8,9 +8,25 @@ type DemoVideoProps = {
   videoId: string;
   title: string;
   className?: string;
+  /**
+   * Optional custom poster image (e.g. a high-resolution frame extracted from
+   * the source video for uploads where YouTube did not generate
+   * `maxresdefault.jpg`).
+   */
+  poster?: string;
+  /**
+   * Optional WebP variant of the custom poster, used in a `<picture>` source.
+   */
+  posterWebp?: string;
 };
 
-export function DemoVideo({ videoId, title, className }: DemoVideoProps) {
+export function DemoVideo({
+  videoId,
+  title,
+  className,
+  poster,
+  posterWebp,
+}: DemoVideoProps) {
   const [active, setActive] = React.useState(false);
 
   return (
@@ -36,21 +52,24 @@ export function DemoVideo({ videoId, title, className }: DemoVideoProps) {
           aria-label={`Play video: ${title}`}
           className="absolute inset-0 flex items-center justify-center"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
-            alt={title}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-            loading="lazy"
-            decoding="async"
-            onError={(e) => {
-              const img = e.currentTarget;
-              if (!img.dataset.fallback) {
-                img.dataset.fallback = "1";
-                img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-              }
-            }}
-          />
+          <picture>
+            {posterWebp && <source srcSet={posterWebp} type="image/webp" />}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={poster ?? `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
+              alt={title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+              decoding="async"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.dataset.fallback) {
+                  img.dataset.fallback = "1";
+                  img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+                }
+              }}
+            />
+          </picture>
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
           <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-foreground/5" />
 

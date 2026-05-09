@@ -107,6 +107,8 @@ export default function LandingPage() {
           <DemoVideo
             videoId="YsH_z1azXSA"
             title="TalkTuahBank · HackUTD 2024 demo"
+            poster="/demo-poster.jpg"
+            posterWebp="/demo-poster.webp"
           />
         </div>
       </section>
