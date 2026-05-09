@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { AwardBadge } from "@/components/site/award-badge";
 import { SectionHeading } from "@/components/site/section-heading";
+import { DemoVideo } from "@/components/site/demo-video";
 
 export default function LandingPage() {
   return (
@@ -54,11 +55,7 @@ export default function LandingPage() {
                 </Link>
               </Button>
               <Button asChild size="xl" variant="outline">
-                <a
-                  href="https://www.youtube.com/watch?v=YsH_z1azXSA"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="#demo-reel">
                   <Youtube className="h-4 w-4" /> Watch the 2-min demo
                 </a>
               </Button>
@@ -95,6 +92,22 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Demo reel */}
+      <section id="demo-reel" className="container scroll-mt-24 -mt-2 pb-16">
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading
+            eyebrow="Demo reel"
+            title="Two minutes of the agent on a real call."
+            description="A live phone call routed through Retell AI into the multi-agent FastAPI server. Caller verifies their identity, transfers funds, applies for a loan, and the operator console updates in real time."
+            className="mb-6"
+          />
+          <DemoVideo
+            videoId="YsH_z1azXSA"
+            title="TalkTuahBank · HackUTD 2024 demo"
+          />
         </div>
       </section>
 
