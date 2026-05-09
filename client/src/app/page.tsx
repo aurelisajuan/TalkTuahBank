@@ -1,12 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowUpRight,
   ArrowRight,
   Phone,
   Workflow,
   Cloud,
   Github,
   Youtube,
-  ExternalLink,
   MapPin,
   CalendarDays,
   Users,
@@ -188,25 +189,29 @@ export default function LandingPage() {
         <SectionHeading
           eyebrow="Team"
           title="Three engineers, one weekend."
-          className="mb-8"
+          description="Three friends who showed up at ECSW with a hunch about voice and a list of bank ledger ideas, and walked out with the overall trophy."
+          className="mb-10"
         />
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
           <TeamCard
             name="Aurelisa Juan"
             handle="aurelisajuan"
             role="Voice agent design + product"
+            photo="/team/aurelisa.webp"
             link="https://devpost.com/aurelisajuan"
           />
           <TeamCard
             name="Bill Zhang"
             handle="IdkwhatImD0ing"
             role="Swarm + backend orchestration"
+            photo="/team/bill.webp"
             link="https://devpost.com/IdkwhatImD0ing"
           />
           <TeamCard
             name="Warren Yun"
             handle="NebuDev14"
             role="Operator console + IPFS pipeline"
+            photo="/team/warren.webp"
             link="https://devpost.com/NebuDev14"
           />
         </div>
@@ -293,34 +298,42 @@ function TeamCard({
   name,
   handle,
   role,
+  photo,
   link,
 }: {
   name: string;
   handle: string;
   role: string;
+  photo: string;
   link: string;
 }) {
-  const initials = name
-    .split(" ")
-    .map((s) => s[0])
-    .slice(0, 2)
-    .join("");
   return (
     <a href={link} target="_blank" rel="noreferrer" className="group block">
-      <Card className="transition-colors group-hover:border-primary/40">
-        <CardContent className="flex items-center gap-4 p-5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 font-mono text-sm text-primary">
-            {initials}
+      <Card className="overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 group-hover:shadow-xl group-hover:shadow-primary/5">
+        <div className="relative aspect-square overflow-hidden bg-muted">
+          <Image
+            src={photo}
+            alt={name}
+            fill
+            sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border border-border/60 bg-background/70 text-muted-foreground backdrop-blur-md transition-all group-hover:border-primary/50 group-hover:bg-primary group-hover:text-primary-foreground">
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold">{name}</p>
-            <p className="font-mono text-[11px] text-muted-foreground">
+        </div>
+        <div className="space-y-1 px-5 pb-5 pt-4">
+          <div className="flex items-baseline justify-between gap-2">
+            <p className="text-base font-semibold tracking-tight">{name}</p>
+            <p className="font-mono text-[10px] text-muted-foreground/70">
               @{handle}
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground">{role}</p>
           </div>
-          <ExternalLink className="h-3.5 w-3.5 text-muted-foreground/50 transition-colors group-hover:text-primary" />
-        </CardContent>
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            {role}
+          </p>
+        </div>
       </Card>
     </a>
   );
