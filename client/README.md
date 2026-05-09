@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TalkTuahBank — project page
 
-## Getting Started
+A Next.js 15 App Router site that doubles as the deployable project page for
+[TalkTuahBank](https://devpost.com/software/talktuahbank), the HackUTD 2024
+overall and Goldman Sachs track winner.
 
-First, run the development server:
+## Routes
+
+| Path | What it is |
+| --- | --- |
+| `/` | Landing — hackathon win, problem framing, team |
+| `/demo` | Interactive walkthrough (Guided + optional Live AI) |
+| `/console` | Operator dashboard ported from the original admin UI |
+| `/architecture` | System design with mermaid topology + annotated server source |
+| `/build` | Stack, 24-hour timeline, lessons learned, self-host instructions |
+| `/api/chat` | AI SDK route handler used by the Live AI tab |
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Stack: **Next.js 15.5 · React 19.2 · Tailwind v4 · AI SDK v6 · pnpm 10**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit http://localhost:3000.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Live AI configuration (optional)
 
-## Learn More
+The Live AI tab on `/demo` is hidden automatically unless one of:
 
-To learn more about Next.js, take a look at the following resources:
+- `AI_GATEWAY_API_KEY` is set, **or**
+- the deployment has the Vercel AI Gateway enabled (auto-injects
+  `VERCEL_OIDC_TOKEN` at build/runtime).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The default model is `openai/gpt-5.4-mini` — override with `LIVE_AI_MODEL`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy to Vercel
 
-## Deploy on Vercel
+This package is the entire deployment. Set the project Root Directory to
+`client/`. The repo-local [`vercel.json`](./vercel.json) pins pnpm as the
+package manager and the `/api/chat` route to a 30-second function duration.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+No external services or environment variables are required for the default
+Guided Walkthrough.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Code map
+
+```
+src/
+  app/
+    layout.tsx                Geist fonts on <html>, ThemeProvider, header/footer
+    page.tsx                  Landing
+    demo/page.tsx             Interactive walkthrough (Guided + Live AI)
+    architecture/page.tsx     System design + annotated source
+    console/page.tsx          Rebuilt operator dashboard
+    build/page.tsx            Stack, timeline, lessons, self-host
+    api/chat/route.ts         AI SDK streamText + tool loop
+    opengraph-image.tsx       OG image
+  components/
+    ui/                       Radix + Tailwind primitives (button, card, tabs, …)
+    site/                     Header, footer, theme toggle, award badge
+    demo/                     PhonePanel, TranscriptStream, AgentStateInspector,
+                              GuidedDemo, LiveDemo, useGuidedRunner
+    console/                  CallList, TranscriptCard, CustomerCard, DocumentsGrid
+    architecture/             MermaidDiagram, AnnotatedCode
+  lib/
+    mock-bank.ts              Port of server/db.py (users, accounts, payments)
+    mock-scenarios.ts         Scripted multi-agent conversations
+    seed-calls.ts             Calls that pre-populate the operator console
+    agent-prompts.ts          Verbatim copies of the four Python agent prompts
+    tools.ts                  AI SDK tool definitions for Live AI
+    store.ts                  Zustand store mirroring the FastAPI WS contract
+    live-mode.ts              Server-only "is Live AI available?" check
+    utils.ts                  cn(), currency / phone / IPFS helpers
+    types.ts                  Shared types
+```

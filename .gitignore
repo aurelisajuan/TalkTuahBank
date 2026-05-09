@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# playwright mcp scratch
+.playwright-mcp/
+client/.playwright-mcp/
+
+# local research scratch
+hackutd-*-research.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

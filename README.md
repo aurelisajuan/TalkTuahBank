@@ -23,6 +23,50 @@
 
 <br>
 
+## Project page (deployable)
+
+The repo now ships with a full Next.js project page in [`client/`](client/) that
+tells the story end-to-end and includes an interactive in-browser walkthrough.
+Two demo modes:
+
+- **Guided Walkthrough** (default, no key required): scripted scenarios stream
+  the same multi-agent transcripts the FastAPI backend produced, animate
+  triage routing, mutate an in-memory bank database clone, and surface fake
+  Pinata IPFS hashes for loan / credit-card flows.
+- **Live AI** (optional, when configured): a Next.js Route Handler at
+  `app/api/chat/route.ts` runs the same tool surface against a real LLM via
+  the **Vercel AI Gateway** using AI SDK v6 `streamText`. The tab is
+  hidden automatically when no `AI_GATEWAY_API_KEY` (or Vercel OIDC token)
+  is present.
+
+### Deploy to Vercel
+
+```bash
+# from the repo root
+cd client
+pnpm install
+pnpm build         # verify
+```
+
+Then on Vercel:
+
+- **Framework**: Next.js
+- **Root Directory**: `client`
+- **Build Command**: `pnpm build` (handled by [`client/vercel.json`](client/vercel.json))
+- **Install Command**: `pnpm install --frozen-lockfile`
+- **Env vars**: none required for the default Guided Walkthrough.
+  - For the optional Live AI tab: enable the **Vercel AI Gateway** on the
+    project (no plaintext `OPENAI_API_KEY` needed; the platform issues a
+    short-lived OIDC token at deploy time). Optionally set `LIVE_AI_MODEL`
+    to override the default model.
+
+The original FastAPI backend in [`server/`](server/) is unchanged and still
+runs the live telephony loop — see the architecture page on the deployed
+site for an annotated tour or the [`Self-host`](#whats-next-for-talktuahbank)
+section below.
+
+<br>
+
 <p align="center">
     <a href="https://devpost.com/software/talktuahbank?ref_content=user-portfolio&ref_feature=in_progress">
         <img width="1728" alt="Talk" src="https://github.com/user-attachments/assets/46459527-c8c5-4379-a0b4-e6aac1b96d76">
