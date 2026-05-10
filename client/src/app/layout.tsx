@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -20,44 +20,81 @@ const geistMono = localFont({
   display: "swap",
 });
 
+const SITE_URL = "https://talktuahbank.vercel.app";
+const SITE_NAME = "TalkTuahBank";
+const SITE_TITLE = "TalkTuahBank — Voice banking for the unbanked";
+const SITE_DESCRIPTION =
+  "A multi-agent conversational AI that runs over a regular phone call — no internet, no smartphone, no banking app. Built in 24 hours and crowned Overall 1st Place + Goldman Sachs Track Winner at HackUTD 2024.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://talktuahbank.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "TalkTuahBank — Voice Banking for the Unbanked",
+    default: SITE_TITLE,
     template: "%s · TalkTuahBank",
   },
-  description:
-    "TalkTuahBank is a voice-based, multi-agent banking assistant that meets people where they are — over a regular phone call. Built in 24 hours and won Overall 1st Place + Goldman Sachs at HackUTD 2024.",
-  openGraph: {
-    title: "TalkTuahBank — Voice Banking for the Unbanked",
-    description:
-      "Multi-agent conversational AI over the phone. Built in 24 hours. Won Overall 1st Place + Goldman Sachs at HackUTD 2024.",
-    type: "website",
-    url: "/",
-    siteName: "TalkTuahBank",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TalkTuahBank — Voice Banking for the Unbanked",
-    description:
-      "Multi-agent conversational AI over the phone. Built in 24 hours at HackUTD 2024.",
-  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  category: "technology",
+  creator: "Aurelisa Juan, Bill Zhang, Warren Yun",
   authors: [
-    { name: "Aurelisa Juan" },
-    { name: "Bill Zhang" },
-    { name: "Warren Yun" },
+    { name: "Aurelisa Juan", url: "https://devpost.com/aurelisajuan" },
+    { name: "Bill Zhang", url: "https://devpost.com/IdkwhatImD0ing" },
+    { name: "Warren Yun", url: "https://devpost.com/NebuDev14" },
   ],
   keywords: [
     "TalkTuahBank",
     "HackUTD 2024",
-    "Goldman Sachs",
+    "HackUTD Ripple Effect",
+    "Goldman Sachs Track",
     "Voice AI",
-    "Multi-agent",
+    "Conversational AI",
+    "Multi-agent system",
     "Retell AI",
     "OpenAI Swarm",
     "Pinata IPFS",
-    "Next.js",
+    "FastAPI",
+    "Next.js 15",
+    "Vercel AI SDK",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description:
+      "Multi-agent conversational AI over the phone. Built in 24 hours. Won Overall 1st Place + Goldman Sachs at HackUTD 2024.",
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description:
+      "Multi-agent conversational AI over the phone. Built in 24 hours at HackUTD 2024.",
+    creator: "@TalkTuahBank",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0e16" },
+  ],
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "TalkTuahBank — Voice Banking for the Unbanked";
+export const alt = "TalkTuahBank — Voice banking for the unbanked";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,68 +15,146 @@ export default async function OG() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: 80,
+          padding: 72,
           background:
-            "radial-gradient(circle at 30% 0%, #1d2533 0%, #0a0e16 60%)",
+            "radial-gradient(circle at 25% -10%, rgba(100,168,240,0.22), transparent 55%), linear-gradient(180deg, #0a0e16 0%, #0a0e16 100%)",
           color: "#f7f9fc",
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              background: "linear-gradient(135deg, #64A8F0 0%, #2A6FB5 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 0 0 1px rgba(100,168,240,0.4)",
-            }}
-          >
-            <span style={{ fontSize: 32, fontWeight: 700 }}>T</span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontSize: 28, fontWeight: 700 }}>
-              TalkTuahBank
-            </span>
-            <span style={{ fontSize: 16, color: "#9aa3b2" }}>
-              HackUTD 2024 · Overall 1st Place + Goldman Sachs
-            </span>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <span
-            style={{
-              fontSize: 76,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              maxWidth: 980,
-            }}
-          >
-            Voice banking for the{" "}
-            <span style={{ color: "#64A8F0" }}>1.7 billion</span> adults
-            without a bank account.
-          </span>
-          <span style={{ fontSize: 22, color: "#aab3c2", maxWidth: 880 }}>
-            A multi-agent conversational AI that runs over a regular phone
-            call. Built in 24 hours. Won.
-          </span>
-        </div>
-
+        {/* Header: brand + award */}
         <div
           style={{
             display: "flex",
-            gap: 12,
             alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            <div
+              style={{
+                width: 64,
+                height: 64,
+                borderRadius: 16,
+                background: "linear-gradient(135deg, #64A8F0 0%, #2A6FB5 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 0 0 1px rgba(100,168,240,0.4)",
+              }}
+            >
+              <svg width="36" height="36" viewBox="0 0 32 32">
+                <path
+                  d="M9 7h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.6L8 25.5V9a2 2 0 0 1 1-2Z"
+                  fill="#ffffff"
+                  opacity="0.97"
+                />
+                <path
+                  d="M12 13h8M12 16.5h5"
+                  stroke="#2A6FB5"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, letterSpacing: -0.5 }}>
+                TalkTuahBank
+              </div>
+              <div style={{ fontSize: 18, color: "#9aa3b2", marginTop: 4 }}>
+                Voice banking for the unbanked
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              padding: "12px 20px",
+              borderRadius: 999,
+              border: "1px solid rgba(100,168,240,0.4)",
+              background: "rgba(100,168,240,0.1)",
+              color: "#cfe2ff",
+              fontSize: 16,
+              fontWeight: 600,
+            }}
+          >
+            <span style={{ fontSize: 20 }}>🏆</span>
+            HackUTD 2024 · 1st Overall
+          </div>
+        </div>
+
+        {/* Hook headline — split into separate text blocks so Satori does not
+            collapse them into a single overflowing line. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+            maxWidth: 1056,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 92,
+              fontWeight: 700,
+              lineHeight: 1.02,
+              letterSpacing: -2,
+              color: "#f7f9fc",
+            }}
+          >
+            1.7 billion adults
+          </div>
+          <div
+            style={{
+              fontSize: 56,
+              fontWeight: 500,
+              lineHeight: 1.1,
+              letterSpacing: -1,
+              color: "#9aa3b2",
+            }}
+          >
+            still don&apos;t have a bank account.
+          </div>
+          <div
+            style={{
+              fontSize: 56,
+              fontWeight: 500,
+              lineHeight: 1.1,
+              letterSpacing: -1,
+              color: "#64A8F0",
+              marginTop: 4,
+            }}
+          >
+            We built one they can call.
+          </div>
+        </div>
+
+        {/* Footer: tech stack */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 14,
             color: "#aab3c2",
             fontSize: 18,
           }}
         >
-          <span style={{ color: "#64A8F0" }}>●</span>
-          <span>Retell AI · OpenAI Swarm · FastAPI · Pinata IPFS · Next.js 15</span>
+          <div
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: 999,
+              background: "#64A8F0",
+              boxShadow: "0 0 12px #64A8F0",
+            }}
+          />
+          <span>
+            Retell AI · OpenAI Swarm · FastAPI · Pinata IPFS · Next.js 15 ·
+            Vercel AI SDK
+          </span>
         </div>
       </div>
     ),

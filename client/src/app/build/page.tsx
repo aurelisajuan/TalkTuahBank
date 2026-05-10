@@ -21,6 +21,7 @@ export const metadata = {
   title: "Build Notes",
   description:
     "What we shipped in 24 hours, why we shipped it that way, and what we'd do next. Tech stack and lessons learned from HackUTD 2024.",
+  alternates: { canonical: "/build" },
 };
 
 const STACK = [

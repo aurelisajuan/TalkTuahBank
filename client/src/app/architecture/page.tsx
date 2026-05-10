@@ -22,6 +22,7 @@ export const metadata = {
   title: "Architecture",
   description:
     "How TalkTuahBank routes a phone call into a multi-agent OpenAI Swarm, applies real banking actions, and pins documents to IPFS via Pinata.",
+  alternates: { canonical: "/architecture" },
 };
 
 const SYSTEM_DIAGRAM = `flowchart TB

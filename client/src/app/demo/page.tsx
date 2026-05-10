@@ -17,6 +17,7 @@ export const metadata = {
   title: "Live Walkthrough",
   description:
     "An interactive walkthrough of the TalkTuahBank multi-agent flow. Pick a scenario or talk to a live LLM that uses the same tool surface as the original Python backend.",
+  alternates: { canonical: "/demo" },
 };
 
 export default function DemoPage() {
