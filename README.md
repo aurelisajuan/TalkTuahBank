@@ -23,7 +23,9 @@
 
 <br>
 
-## Project page (deployable)
+## Project page
+
+**Live site:** [talktuah.art3m1s.me](https://talktuah.art3m1s.me)
 
 The repo now ships with a full Next.js project page in [`client/`](client/) that
 tells the story end-to-end and includes an interactive in-browser walkthrough.

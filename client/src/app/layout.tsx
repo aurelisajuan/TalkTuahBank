@@ -20,7 +20,7 @@ const geistMono = localFont({
   display: "swap",
 });
 
-const SITE_URL = "https://talktuahbank.vercel.app";
+const SITE_URL = "https://talktuah.art3m1s.me";
 const SITE_NAME = "TalkTuahBank";
 const SITE_TITLE = "TalkTuahBank — Voice banking for the unbanked";
 const SITE_DESCRIPTION =
