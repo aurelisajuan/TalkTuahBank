@@ -37,13 +37,11 @@ A multi-agent conversational AI that runs over a regular phone call &mdash; no i
 
 <div align="center">
 
-<a href="https://talktuah.art3m1s.me">
-  <video src="https://github.com/aurelisajuan/TalkTuahBank/raw/main/.github/assets/demo-clip.mp4" autoplay loop muted playsinline width="900" poster=".github/assets/demo-poster.jpg">
-    <img src=".github/assets/demo-poster.jpg" alt="TalkTuahBank demo &mdash; click to watch on YouTube" width="900" />
-  </video>
+<a href="https://www.youtube.com/watch?v=YsH_z1azXSA">
+  <img src=".github/assets/demo-poster-thumb.jpg" alt="Watch the 2-minute HackUTD demo on YouTube" width="900" />
 </a>
 
-<sub><em>A real phone call routes through Retell&nbsp;AI into a multi-agent FastAPI backend; the operator console reflects every event in real time. Click to watch the full 2&#8209;minute demo on YouTube.</em></sub>
+<sub><em>A real phone call routes through Retell&nbsp;AI into a multi-agent FastAPI backend; the operator console reflects every event in real time. <a href="https://www.youtube.com/watch?v=YsH_z1azXSA">Watch the full 2&#8209;minute demo on YouTube&nbsp;&rarr;</a></em></sub>
 
 </div>
 
