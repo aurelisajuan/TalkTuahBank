@@ -5,23 +5,23 @@ import random
 # Initial Banking Database Structure
 db = {
     "users": {
-        "+1-408-585-8267": {
+        "+1-512-555-0142": {
             "name": "Bill Zhang",
             "accounts": ["ACC892", "ACC347"],
-            "ssn": "784-29-5163",
-            "address": "4728 Willow Creek Rd, Austin, TX 78701",
-            "date_of_birth": "1991-08-24",
-            "email": "bill.zhang@outlook.com",
-            "phone": "+1-408-585-8267",
+            "ssn": "567-89-0123",
+            "address": "987 Cedar Ln, Austin, TX 78701",
+            "date_of_birth": "1993-02-10",
+            "email": "bill.zhang@example.com",
+            "phone": "+1-512-555-0142",
         },
-        "+1-917-828-6465": {
+        "+1-214-555-0183": {
             "name": "Warren Yun",
             "accounts": ["ACC123", "ACC456"],
             "ssn": "123-45-6789",
             "address": "123 Main St, Dallas, TX 75201",
             "date_of_birth": "1985-03-15",
             "email": "warren.yun@email.com",
-            "phone": "+1-917-828-6465",
+            "phone": "+1-214-555-0183",
         },
         "+14695550456": {
             "name": "Jane Smith",
@@ -240,7 +240,7 @@ calls_db = {}
 def generate_sample_data():
     sample_data = [
         {
-            "id": "+1-408-585-8267",
+            "id": "+1-512-555-0142",
             "time": (
                 datetime.now() - timedelta(minutes=random.randint(0, 120))
             ).isoformat(),
@@ -259,11 +259,11 @@ def generate_sample_data():
                 },
                 {"role": "user", "content": "Yes, it's ACC123"},
             ],
-            "user_id": "+1-408-585-8267",
+            "user_id": "+1-512-555-0142",
             "referenced_documents": [],
         },
         {
-            "id": "+1-917-828-6465",
+            "id": "+1-214-555-0183",
             "time": (
                 datetime.now() - timedelta(minutes=random.randint(0, 120))
             ).isoformat(),
@@ -279,7 +279,7 @@ def generate_sample_data():
                 },
                 {"role": "user", "content": "I want to send $50 to my friend John"},
             ],
-            "user_id": "+1-917-828-6465",
+            "user_id": "+1-214-555-0183",
             "referenced_documents": [],
         },
         {
