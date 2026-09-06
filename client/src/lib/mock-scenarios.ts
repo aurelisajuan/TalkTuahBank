@@ -28,7 +28,7 @@ export const SCENARIOS: Scenario[] = [
     title: "Check account balance",
     description:
       "Bill calls in to ask his balance. Triage hands off to the Accounts Agent, which fetches the balance from the bank DB.",
-    callerPhone: "+1-408-585-8267",
+    callerPhone: "+1-512-555-0142",
     intentTag: "ACCOUNTS",
     steps: [
       {
@@ -84,7 +84,7 @@ export const SCENARIOS: Scenario[] = [
     title: "Transfer funds between accounts",
     description:
       "A live $250 internal transfer between two accounts owned by the same caller, executed by the Payments Agent's transfer_funds tool.",
-    callerPhone: "+1-408-585-8267",
+    callerPhone: "+1-512-555-0142",
     intentTag: "PAYMENTS",
     steps: [
       {
@@ -141,7 +141,7 @@ export const SCENARIOS: Scenario[] = [
     title: "Schedule a future bill payment",
     description:
       "Caller asks to schedule a $400 payment to a vendor account two weeks out. Funds are held; status persisted as Scheduled.",
-    callerPhone: "+1-917-828-6465",
+    callerPhone: "+1-214-555-0183",
     intentTag: "PAYMENTS",
     steps: [
       {
@@ -213,7 +213,7 @@ export const SCENARIOS: Scenario[] = [
     title: "Cancel a scheduled payment",
     description:
       "Caller cancels payment PAY001. The Payments Agent flips its status to Canceled and refunds the held amount back to the source account.",
-    callerPhone: "+1-917-828-6465",
+    callerPhone: "+1-214-555-0183",
     intentTag: "PAYMENTS",
     steps: [
       {

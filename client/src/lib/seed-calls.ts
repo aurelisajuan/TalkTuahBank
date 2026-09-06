@@ -9,9 +9,9 @@ function isoOffset(minutesAgo: number): string {
 }
 
 export const SEED_CALLS: Record<string, Call> = {
-  "+1-408-585-8267": {
-    id: "+1-408-585-8267",
-    user_id: "+1-408-585-8267",
+  "+1-512-555-0142": {
+    id: "+1-512-555-0142",
+    user_id: "+1-512-555-0142",
     time: isoOffset(8),
     agent_trail: ["Triage Agent", "Accounts Agent"],
     transcript: [
@@ -38,9 +38,9 @@ export const SEED_CALLS: Record<string, Call> = {
     ],
     referenced_documents: [],
   },
-  "+1-917-828-6465": {
-    id: "+1-917-828-6465",
-    user_id: "+1-917-828-6465",
+  "+1-214-555-0183": {
+    id: "+1-214-555-0183",
+    user_id: "+1-214-555-0183",
     time: isoOffset(22),
     agent_trail: ["Triage Agent", "Payments Agent"],
     transcript: [
